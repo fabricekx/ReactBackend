@@ -1,0 +1,58 @@
+{
+  "utilisateurs": [
+    {
+      "id": "76a3",
+      "email": "fabricekx@gmail.com",
+      "password": "123",
+      "pseudo": "Pastafari 1er",
+      "date": "2024-10-07T16:14:13.624Z"
+    }
+  ],
+  "publications": [
+    {
+      "id": "b038",
+      "publication": "RE bonjour mes chers petits pastafariens",
+      "image": "https://img.freepik.com/photos-premium/banniere-fond-illustrant-celebration-journee-nationale-pates_1258570-14389.jpg?w=1380",
+      "date": "2024-10-07T16:36:06.183Z",
+      "userId": "76a3",
+      "nbLike": 0,
+      "auteur": "Pastafari 1er"
+    },
+    {
+      "id": "1a61",
+      "publication": "Recette de pates au chorizo",
+      "image": "https://img.freepik.com/photos-premium/photo-gros-plan-pates-au-chorizo-poivrons_943281-111807.jpg?w=1380",
+      "date": "2024-10-07T16:46:08.545Z",
+      "userId": "76a3",
+      "nbLike": 0,
+      "auteur": "Pastafari 1er"
+    },
+    {
+      "id": "c62f",
+      "publication": "Les secrets d’un véritable plat de pâtes à l’italienne\n\n\nAvec plus d’une centaine de variétés différentes, la pasta* italienne se décline en autant de versions qu’il existe de recettes. Cependant, rares sont ceux qui savent les cuisiner dans les règles de l’art.\n\nSaviez-vous par exemple que les Italiens les consomment en plat principal, et non en accompagnement ? Que le parmesan et le poisson ne se rencontrent jamais dans une recette italienne digne de ce nom ? Du choix du blé au temps de cuisson, découvrez les étapes et astuces pour réussir un parfait plat de pâtes à l’italienne (et ne plus vexer aucun italien.)\n\n",
+      "image": "https://img.freepik.com/photos-gratuite/delicieuses-pates-assiette_23-2150690639.jpg?t=st=1728373515~exp=1728377115~hmac=a3d7dcd73ede74f1ac587a931e7eb2a52ef2dde85329932b784a0d43b18060d6&w=1060",
+      "date": "2024-10-08T07:45:40.194Z",
+      "userId": "76a3",
+      "nbLike": 0,
+      "auteur": "Pastafari 1er"
+    },
+    {
+      "id": "6771",
+      "publication": "Étape 1\nDétailler tous les légumes en fine julienne.\n\nÉtape 2\n\nFaire bouillir une grande casserole d'eau salée, y jeter les nouilles, dès que l'ébullition à repris, couvrir, éteindre le feu et laisser reposer pendant 4 min.\n\nÉtape 3\n\nPendant ce temps, faire revenir les légumes dans l'huile pendant 5 mn, à feu très vif, ajouter les cinq épices et la sauce de soja.\n\nÉtape 4\n\nÉgoutter les nouilles, les joindre aux légumes et rectifier l'assaisonnement si besoin.",
+      "image": "https://img.freepik.com/photos-gratuite/vue-dessus-du-concept-delicieuses-nouilles_23-2148773775.jpg?t=st=1728387116~exp=1728390716~hmac=e24dccbd29887d5606e06b86dced48fc5f7caf8c789ef707ec86d9115e07d2ec&w=1060",
+      "date": "2024-10-08T11:32:52.145Z",
+      "userId": "76a3",
+      "nbLike": 0,
+      "auteur": "Pastafari 1er"
+    },
+    {
+      "id": "703f",
+      "publication": "JE suis nouveau",
+      "image": "zegzegzegzegg",
+      "date": "2024-10-08T12:30:44.401Z",
+      "userId": "76a3",
+      "nbLike": 0,
+      "auteur": "Pastafari 1er"
+    }
+  ]
+}
