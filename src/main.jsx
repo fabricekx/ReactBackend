@@ -14,6 +14,8 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
+import MaMeteo from './pages/MaMeteo/MaMeteo.jsx'
+import Plantes from './pages/plantes/Plantes.jsx'
 
 const queryClient =  new QueryClient();
 
@@ -22,6 +24,8 @@ const router= createBrowserRouter([
   { path: "/connexion", element:  <Connexion/>, errorElement: <PageErreur/>},
   { path: "/inscription", element:  <Inscription/>,errorElement: <PageErreur/>},
   { path: "/dashboard", element:  <DashBoard/>,errorElement: <PageErreur/>},
+  { path: "/meteo", element:  <MaMeteo/>,errorElement: <PageErreur/>},
+  { path: "/plantes", element:  <Plantes/>,errorElement: <PageErreur/>},
 
 ]);
 
