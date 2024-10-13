@@ -1,42 +1,47 @@
-import React from 'react';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
-import WindChart from './WindChart';
+import React from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
+import WindChart from "./WindChart";
 
-// Fonction pour récupérer les données météo via Axios
-const latitude = "43.5";
-const longitude = "7.0127"
-const url =  `https://api.open-meteo.com/v1/forecast?latitude=${latitude}longitude=${longitude}&current=wind_direction_10m,wind_gusts_10m&hourly=wind_speed_10m&wind_speed_unit=kn&timezone=Europe%2FBerlin&forecast_days=3&models=meteofrance_seamless`
+// Fonction pour récupérer les données météo
+const fetchWeatherData = async ({ queryKey }) => {
+  const [_, latitude, longitude] = queryKey;
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=wind_direction_10m,wind_gusts_10m&hourly=wind_speed_10m,wind_direction_10m,wind_gusts_10m&wind_speed_unit=kn&timezone=Europe%2FBerlin&forecast_days=3&models=meteofrance_seamless`;
 
-const fetchWeatherData = async () => {
-  const response = await axios.get(
-    'https://api.open-meteo.com/v1/forecast?latitude=43.5513&longitude=7.0127&current=wind_direction_10m,wind_gusts_10m&hourly=wind_speed_10m,wind_direction_10m,wind_gusts_10m&wind_speed_unit=kn&timezone=Europe%2FBerlin&forecast_days=3&models=meteofrance_seamless'
-  );
+  const response = await axios.get(url);
   return response.data;
 };
 
-export default function Weather() {
-  const queryClient = useQueryClient(); // Pour utiliser les fonctionnalités avancées comme l'invalidation du cache
+// Composant FetchMeteo
+export default function FetchMeteo({ latitude, longitude }) {
+  console.log("nouvelles coordonnée fetch" + latitude + longitude)
+  const queryClient = useQueryClient();
 
-  // Utilisation de useQuery pour récupérer les données de l'API
-  const { data: weatherData, error, isLoading } = useQuery({
-    queryKey: ['weatherData'], // Clé unique pour cette requête
-    queryFn: fetchWeatherData, // Fonction qui effectue la requête
+  const {
+    data: weatherData,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["weatherData", latitude, longitude], // Latitude et longitude dans la clé de requête
+    queryFn: fetchWeatherData, 
+    enabled: !!latitude && !!longitude, // Requête activée seulement si les coordonnées sont valides
   });
-console.log(weatherData);
+
   if (isLoading) return <div>Chargement des données...</div>;
   if (error) return <div>Erreur : {error.message}</div>;
 
   return (
     <div>
       <h2>Données météo</h2>
-      {weatherData && (
+      {weatherData && weatherData.hourly ? (
         <div>
-      
-          <WindChart windData={weatherData.hourly}></WindChart>
+          {console.log(weatherData.hourly)}
+          {/* Vérification supplémentaire sur les données disponibles */}
+          <WindChart windData={weatherData.hourly} />
         </div>
+      ) : (
+        <p>Pas de données disponibles pour cet emplacement.</p>
       )}
-      
     </div>
   );
 }
