@@ -11,12 +11,22 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import { Link } from 'react-router-dom';
 
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
+  };
+// Menu de gauche
+  const [menuAnchorEl, setMenuAnchorEl] = React.useState(null);
+  const handleMenuClick = (event) => {
+    setMenuAnchorEl(event.currentTarget); // Ouvre le menu à gauche
+  };
+  
+  const handleMenuClose = () => {
+    setMenuAnchorEl(null); // Ferme le menu à gauche
   };
 
   const handleMenu = (event) => {
@@ -42,10 +52,44 @@ export default function NavBar() {
             edge="start"
             color="inherit"
             aria-label="menu"
+            onClick={handleMenuClick} // Ouvrir le menu déroulant
             sx={{ mr: 2 }}
           >
             <MenuIcon />
           </IconButton>
+          {/* Menu déroulant à gauche */}
+          <Menu
+            id="left-menu"
+            anchorEl={menuAnchorEl}
+            open={Boolean(menuAnchorEl)}
+            onClose={handleMenuClose}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+          >
+            <MenuItem onClick={handleMenuClose}>
+              <Link to="/meteo" style={{ textDecoration: 'none', color: 'inherit' }}>
+                Ma météo
+              </Link>
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+              <Link to="/plantes" style={{ textDecoration: 'none', color: 'inherit' }}>
+                Mes plantes
+              </Link>
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+              <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                Mes pastas
+              </Link>
+            </MenuItem>
+          </Menu>
+
+          {/* Titre principal */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             My Social NetWork
           </Typography>
@@ -76,6 +120,7 @@ export default function NavBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
+              
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={deconnexion}>Déconnexion</MenuItem>
               </Menu>
