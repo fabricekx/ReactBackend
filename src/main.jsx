@@ -27,7 +27,7 @@ const router= createBrowserRouter([
   { path: "/meteo", element:  <MaMeteo/>,errorElement: <PageErreur/>},
   { path: "/plantes", element:  <Plantes/>,errorElement: <PageErreur/>},
 
-]);
+], { basename: "/MeteoReact" }); // pour le déploiement depuis le dépot git
 
 
 createRoot(document.getElementById('root')).render(
