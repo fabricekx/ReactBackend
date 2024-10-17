@@ -6,7 +6,7 @@ import WindChart from "./WindChart";
 // Fonction pour récupérer les données météo
 const fetchWeatherData = async ({ queryKey }) => {
   const [_, latitude, longitude] = queryKey;
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=wind_direction_10m,wind_gusts_10m&hourly=wind_speed_10m,wind_direction_10m,wind_gusts_10m&wind_speed_unit=kn&timezone=Europe%2FBerlin&forecast_days=3&models=meteofrance_seamless`;
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=wind_direction_10m,wind_gusts_10m&hourly=wind_speed_10m,rain,wind_direction_10m,wind_gusts_10m&wind_speed_unit=kn&timezone=Europe%2FBerlin&forecast_days=3&models=meteofrance_seamless`;
 
   const response = await axios.get(url);
   return response.data;
@@ -14,7 +14,7 @@ const fetchWeatherData = async ({ queryKey }) => {
 
 // Composant FetchMeteo
 export default function FetchMeteo({ latitude, longitude }) {
-  console.log("nouvelles coordonnée fetch" + latitude + longitude)
+  // console.log("nouvelles coordonnée fetch" + latitude + longitude)
   const queryClient = useQueryClient();
 
   const {
@@ -32,7 +32,7 @@ export default function FetchMeteo({ latitude, longitude }) {
 
   return (
     <div>
-      <h2>Données météo</h2>
+      <h2 style={{ marginTop:'20px'}}>Données météo</h2>
       {weatherData && weatherData.hourly ? (
         <div>
           {console.log(weatherData.hourly)}

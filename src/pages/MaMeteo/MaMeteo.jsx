@@ -8,7 +8,7 @@ import MapPicker from "./components/MapPicker.jsx";
 
 export default function MaMeteo() {
 
-    const [coordinates, setCoordinates] = useState({ lat: 43.5513, lng: 7.0127 }); // coordonnées par défaut
+    const [coordinates, setCoordinates] = useState({ lat: 43.5310, lng: 7.035 }); // coordonnées par défaut
 
     const handleMapClick = (lat, lon) => {
       setCoordinates({  lat, lng: lon });

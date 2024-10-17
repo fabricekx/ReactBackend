@@ -6,7 +6,7 @@ import 'leaflet/dist/leaflet.css';
 
 export default function MapPicker({onMapClick}) { //onMapClick props fonction envoyée depuis MaMeteo
 
-  const [coordinates, setCoordinates] = useState({ lat: 43.5513, lng: 7.0127 }); // Coordonnées par défaut
+  const [coordinates, setCoordinates] = useState({  lat: 43.5310, lng: 7.035}); // Coordonnées par défaut
 
   const mapRef = useRef(); // Utilisation d'un ref pour accéder à l'instance de la carte
 
@@ -27,13 +27,14 @@ function ClickableMap() {
 }
   return (
      <div>
-      <h2>Choisissez un emplacement</h2>
+      <h2 style={{ marginTop:'20px'}}>Choisissez un emplacement</h2>
       <MapContainer
         center={[coordinates.lat, coordinates.lng]} // Centre initial de la carte
         zoom={13}
         style={{ height: '400px', width: '100%' }}
         dragging={true}
         whenCreated={(mapInstance) => { mapRef.current = mapInstance }} // Enregistre l'instance de la carte dans le ref
+      
       >
         {/* Affichage des tuiles OpenStreetMap */}
         <TileLayer
@@ -46,11 +47,11 @@ function ClickableMap() {
         <ClickableMap />
       </MapContainer>
 
-      <div style={{ marginTop: '20px' }}>
+      {/* <div style={{ marginTop: '20px' }}>
         <h3>Coordonnées choisies :</h3>
         <p>Latitude: {coordinates.lat.toFixed(4)}</p>
         <p>Longitude: {coordinates.lng.toFixed(4)}</p>
-      </div>
+      </div> */}
     </div>
   );
 }
